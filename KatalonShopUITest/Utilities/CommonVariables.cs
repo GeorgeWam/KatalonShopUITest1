@@ -9,7 +9,7 @@ namespace KatalonShopUITest.Utilities
 {
     public static class CommonVariables
     {
-        public static string jsonFile = File.ReadAllText(Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "Utilities", "appConfig.json"));
+        public static string jsonFile = File.ReadAllText(Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "Utilities", "Config.json"));
         static dynamic config = JsonConvert.DeserializeObject(jsonFile);
 
         public static string baseUrl = config.BaseUrl;

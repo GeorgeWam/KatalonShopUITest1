@@ -18,7 +18,7 @@ namespace KatalonShopUITest.Hooks
         {
             driver = new ChromeDriver();
             driver.Manage().Window.Maximize();
-            driver.Navigate().GoToUrl("https://cms.demo.katalon.com/");
+            driver.Navigate().GoToUrl(CommonVariables.baseUrl);
             Thread.Sleep(2000);
         }
 
