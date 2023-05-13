@@ -1,4 +1,5 @@
 ﻿using KatalonShopUITest.Hooks;
+using KatalonShopUITest.Utilities;
 using OpenQA.Selenium;
 using System;
 using System.Collections.Generic;
@@ -89,6 +90,48 @@ namespace KatalonShopUITest.Pages
         public static IWebElement ItemWithLowestPrice
         {
             get { return Context.driver.FindElement(By.XPath("//a[@data-product_sku='POSTER-FLYING-NINJA']")); }
+        }
+
+        public static void IdentifyPrices()
+        {
+            //Identifying xPath for the prices
+            IList<IWebElement> element = Context.driver.FindElements(By.XPath("//span[@class='woocommerce-Price-amount amount']")); // First we create a list of the similar locators
+            IWebElement no1 = element[0];
+            IWebElement no2 = element[2];
+            IWebElement no3 = element[4];
+            IWebElement no4 = element[6];
+
+            double price1 = double.Parse(no1.Text.Replace("$", ""));
+            double price2 = double.Parse(no2.Text.Replace("$", ""));
+            double price3 = double.Parse(no3.Text.Replace("$", ""));
+            double price4 = double.Parse(no4.Text.Replace("$", ""));
+
+            List<double> priceList = new List<double> { price1, price2, price3, price4};
+
+            double smallestPrice = priceList.Min();
+
+            switch (smallestPrice)
+            {
+                case 18:
+                    Context.driver.FindElement(By.XPath("//a[@data-product_id='26']")).Click();
+                    break;
+
+                case 35:
+                    Context.driver.FindElement(By.XPath("//a[@data-product_id='27']")).Click();
+                    break;
+
+                case 20:
+                    Context.driver.FindElement(By.XPath("//a[@data-product_id='25']")).Click();
+                    break;
+
+                case 12:
+                    IWebElement xButton = Context.driver.FindElement(By.XPath("//a[@data-product_id='54']"));
+                    Helpers.HandleClickInteruptedException(xButton);
+                    //xButton.Click();
+                    break;
+
+            }
+
         }
     }
 }

@@ -55,7 +55,8 @@ namespace KatalonShopUITest
         [When(@"I am able to remove the lowest price Item from my cart")]
         public void WhenIAmAbleToRemoveTheLowestPriceItemFromMyCart()
         {
-            CartPage.ItemWithLowestPrice.Click();
+            //CartPage.ItemWithLowestPrice.Click();
+            CartPage.IdentifyPrices();
         }
 
         [Then(@"I am able to verify three items in my cart")]
